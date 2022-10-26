@@ -53,16 +53,16 @@ namespace Oefening1
 
 
 
-        private void largeCtrlLToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FontLarge_Click(object sender, EventArgs e)
         {
             tbText.Font = new Font("Segoe UI", 14);
         }
 
-        private void normalToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FontNormal_Click(object sender, EventArgs e)
         {
             tbText.Font = new Font("Segoe UI", 9);
         }
-        private void smallToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FontSmall_Click_1(object sender, EventArgs e)
         {
             tbText.Font = new Font("Segoe UI", 7);
         }
@@ -101,5 +101,7 @@ namespace Oefening1
         {
             tbText.ForeColor = System.Drawing.Color.Blue;
         }
+
+
     }
 }

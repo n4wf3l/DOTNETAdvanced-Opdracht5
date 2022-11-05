@@ -1,33 +1,70 @@
+using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 namespace Oefening3
 {
     public partial class Form1 : Form
     {
+        List<Rectangle> rectangles = new List<Rectangle>();
+        Graphics graf;
+
         public Form1()
         {
             InitializeComponent();
+            graf = this.CreateGraphics();
         }
 
-        private void button1_Paint(object sender, PaintEventArgs e)
+        Pen red = new Pen(Color.Red);
+        Pen green = new Pen(Color.Green);
+
+        public static int teller;
+
+        private void rechthoekToevoegenToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-        }
 
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
+
+
+        int counter = teller;
+            for (int i = 0; i < teller; i++)
+            {
+                counter--;
+            }
+            teller++;
+            for (int i = 0; i < teller; i++)
+            {
+                Rectangle rect = new Rectangle(20, 20, 220, 90);
+                Rectangle circle = new Rectangle(20, 20, 220, 90);
+                rectangles.Add(rect);
+                rectangles.Add(circle);
+            }
+
+            foreach (Rectangle rec in rectangles)
+            {
+
+                Pen pen = new Pen(Color.Red);
+                graf.DrawRectangle(pen, new Rectangle(200, 200, 220, 90));
+            }
+
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics gObject = Form1.CreateGraphics();
-            Brush red = new SolidBrush(Color.Red);
-            Pen redPen = new Pen(red, 8);
-            gObject.FillRectangle(red, 10, 10, 100, 50);
-            gObject.DrawRectangle(redPen, 10, 75, 100, 50);
+            Graphics g = e.Graphics;
+
         }
 
-        private void backgroundWorker2_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void rechthoekVerwijderenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            graf.Clear(Color.White);
+            rectangles.RemoveAt(rectangles.Count - 1);
 
+            foreach (Rectangle r in rectangles)
+            {
+                Graphics graph = this.CreateGraphics();
+                Pen pen = new Pen(Color.Red);
+                graph.DrawRectangle(pen, new Rectangle(200, 200, 220, 90));
+            }
         }
-    }
+    } 
 }
